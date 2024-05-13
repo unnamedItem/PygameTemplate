@@ -33,16 +33,15 @@ class Stage2(Stage):
         ]
         self.dialog_box = DialogBox()
 
+    def events(self, event:Event) -> None:
+        for option in self.options:
+            option.events(event)
+        self.dialog_box.process_event(event)
 
     def update(self) -> None:
         for option in self.options:
             option.update()
         self.dialog_box.update(commons.System.dt)
-
-    def events(self, event:Event) -> None:
-        for option in self.options:
-            option.events(event)
-        self.dialog_box.process_event(event)
 
     def render(self, display: Surface) -> None:
         self.title[2] = display.blit(self.font_title.render(*self.title[0]), self.title[1])

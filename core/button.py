@@ -7,10 +7,11 @@ from pygame.event import Event
 from pygame import rect
 import pygame
 
+from core.baseClass import BaseClass
 import commons
 
 
-class Button:
+class Button(BaseClass):
     def __init__(
             self,
             event: Callable,

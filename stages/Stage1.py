@@ -6,6 +6,7 @@ from pygame.event import Event
 
 from core.stage import Stage
 from core.button import Button
+import core.grid as grid
 import commons
 import stages
 
@@ -29,22 +30,37 @@ class Stage1(Stage):
         self.options:list[Button] = [
             CustomButton(self.event_next_stage, "Next Stage", (60, 400), None, font_size=40, inner_margin=0, font_color=commons.Colors.WHITE),
         ]
-
-
-    def update(self) -> None:
-        for option in self.options:
-            option.update()
+        self.grid = grid.Grid(
+            grid.Row(
+                grid.Col(Button(self.foo, "Button", (0, 0), None, font_size=40, inner_margin=0, font_color=commons.Colors.WHITE)),
+                grid.Col(Button(self.foo, "Button", (0, 0), None, font_size=40, inner_margin=0, font_color=commons.Colors.WHITE))
+            ),
+            grid.Row(
+                grid.Col(Button(self.foo, "Button", (0, 0), None, font_size=40, inner_margin=0, font_color=commons.Colors.WHITE)),
+                grid.Col(Button(self.foo, "Button", (0, 0), None, font_size=40, inner_margin=0, font_color=commons.Colors.WHITE))
+            ),
+        )
 
     def events(self, event:Event) -> None:
         for option in self.options:
             option.events(event)
+        self.grid.events(event)
+
+    def update(self) -> None:
+        for option in self.options:
+            option.update()
+        self.grid.update()
 
     def render(self, display: Surface) -> None:
         self.title[2] = display.blit(self.font_title.render(*self.title[0]), self.title[1])
         for option in self.options:
             option.render(display)
+        self.grid.render(display)
 
 
     def event_next_stage(self):
         self.manager.deactivate_stage(stages.StagesName.Stage1)
         self.manager.activate_stage(stages.StagesName.Stage2)
+
+    def foo(self):
+        print("bar")

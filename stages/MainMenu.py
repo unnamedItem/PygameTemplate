@@ -31,13 +31,13 @@ class MainMenu(Stage):
             CustomButton(self.event_exit, "Exit", (60, 440), None, font_size=40, inner_margin=0, font_color=commons.Colors.WHITE),
         ]
 
-    def update(self) -> None:
-        for option in self.options:
-            option.update()
-
     def events(self, event:Event) -> None:
         for option in self.options:
             option.events(event)
+
+    def update(self) -> None:
+        for option in self.options:
+            option.update()
 
     def render(self, display: Surface) -> None:
         self.title[2] = display.blit(self.font_title.render(*self.title[0]), self.title[1])

@@ -3,9 +3,9 @@ from pygame.event import Event
 
 class BaseClass:
     def __init__(self) -> None:
-        pass
+        self.surface:Surface
 
-    def event(self, event: Event) -> None:
+    def events(self, event: Event) -> None:
         pass
 
     def render(self, display: Surface) -> None:
