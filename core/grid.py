@@ -26,7 +26,7 @@ class Col():
         self.surface = Surface((self.width, self.height), flags=SRCALPHA)
 
     def render(self, display: Surface, position: tuple = (0,0)) -> None:
-        self.content.render(self.surface)
+        self.content.render(self.surface)        
         display.blit(self.surface, position)
 
 class Row():
@@ -51,6 +51,7 @@ class Row():
         x = 0
         for col in self.cols:
             col.render(self.rsurface, (x,0))
+            col.content.set_display((x, position[1]))
             x += col.width
         display.blit(self.rsurface, position)
         
