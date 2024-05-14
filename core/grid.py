@@ -1,8 +1,8 @@
 from pygame.surface import Surface
 from pygame.event import Event
-from pygame import SRCALPHA, DOUBLEBUF
+from pygame import SRCALPHA
 
-from core.baseClass import BaseClass
+from core.baseClasses import BaseDisplay
 import commons
 
 class Flex():
@@ -10,7 +10,7 @@ class Flex():
         pass
 
 class Col():
-    def __init__(self, content: BaseClass) -> None:
+    def __init__(self, content: BaseDisplay) -> None:
         self.content = content
         self.width = 0
         self.height = 0

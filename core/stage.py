@@ -3,7 +3,7 @@ import sys
 import importlib.util
 from pathlib import Path
 
-from core.baseClass import BaseClass
+from core.baseClasses import BaseClass
 import commons
 
 
